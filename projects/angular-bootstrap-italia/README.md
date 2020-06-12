@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Kit Bootstrap Italia / Angular Material
-import { AngularBoostrapItaliaModule } from 'angular-bootstrap-italia';
+import { AngularBootstrapItaliaModule } from 'angular-bootstrap-italia';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { AngularBoostrapItaliaModule } from 'angular-bootstrap-italia';
   ],
   imports: [
     BrowserModule,
-    AngularBoostrapItaliaModule,
+    AngularBootstrapItaliaModule,
     ...
   ],
   providers: [],

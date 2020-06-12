@@ -1,27 +1,56 @@
-# DcWorkspace
+<p align="center">
+  <h1 align="center">Bootstrap Italia + Angular 9</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+  <p align="center">
+    Angular base library to wrap Bootstrap Italia HTML, CSS and JS as Angular dynamic components
+  </p>
+</p>
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Bootstrap Italia 1.3.10](https://italia.github.io/bootstrap-italia/docs/come-iniziare/introduzione)
+* Angular 9.1.5
 
-## Code scaffolding
+## Quick start
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Warning: we strongly recommend node >=v6.9.0 and npm >=3.0.0**
 
-## Build
+`npm i angular-bootstrap-italia` - Installs project modules
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+and then from your Angular `AppModule`:
 
-## Running unit tests
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+// Kit Bootstrap Italia / Angular Material
+import { AngularBootstrapItaliaModule } from 'angular-bootstrap-italia';
 
-## Running end-to-end tests
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AngularBootstrapItaliaModule,
+    ...
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Once your library is imported, you can use its components, directives and pipes in your Angular application.
 
-## Further help
+## Creators
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**Dario Cristini**
+
+## Copyright and license
+
+Code and documentation copyright 2020 the authors.
+
+Code released under the [MIT License].
