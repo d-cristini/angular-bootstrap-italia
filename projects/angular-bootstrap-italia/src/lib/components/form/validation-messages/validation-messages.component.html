@@ -1,0 +1,4 @@
+<div class="valid-message" [class.message-textarea]="field.controlType === 'textarea'"
+  *ngIf="valid">{{ field.validMessage }}</div>
+<div class="invalid-message" [class.message-textarea]="field.controlType === 'textarea'"
+  *ngIf="invalid">{{ field.invalidMessage }}</div>

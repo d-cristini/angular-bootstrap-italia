@@ -1,0 +1,43 @@
+<div class="table-responsive my-5 shadow">
+  <table class="table mb-0 bg-white">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let colItem of columns">
+          <span>{{ colItem }}</span>
+          <!-- <svg class="icon icon-xs">
+                    <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-expand">
+                    </use>
+                  </svg> -->
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="loading">
+        <td [attr.colspan]="columns.length">
+          <div class="progress progress-indeterminate" style="width: 100%;">
+            <span class="sr-only">In elaborazione...</span>
+            <div class="progress-bar" role="progressbar"></div>
+          </div>
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of $rows | async">
+        <td class="align-middle" *ngFor="let key of getElemKeys(item)">
+          {{ item[key] }}
+        </td>
+        <td class="align-middle">
+          <a href="#" class="btn btn-secondary btn-xs btn-icon" role="button" aria-disabled="true">
+            <svg class="icon icon-white">
+              <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search">
+              </use>
+
+            </svg>
+            <span>Dettagli</span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<lib-table-pagination *ngIf="pagination" [currentPagination]="pagination"
+  (paginationChange)="emitNewPagination($event)"></lib-table-pagination>

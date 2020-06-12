@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col">
+    <nav class="pagination-wrapper justify-content-center" aria-label="Esempio di navigazione della pagina">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);" (click)="previousPage()">
+            <svg class="icon icon-primary">
+              <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-chevron-left">
+              </use>
+            </svg>
+            <span class="sr-only">Pagina precedente</span>
+          </a>
+        </li>
+
+        <li class="page-item" *ngFor="let elem of pages">
+
+          <a class="page-link" href="javascript:void(0);" aria-current="page"
+            *ngIf="!elem.separator && elem.page === currentPagination.currentPage" (click)="setPage(elem.page)">
+            {{ elem.page }}
+          </a>
+
+          <a class="page-link" href="javascript:void(0);" (click)="setPage(elem.page)"
+            *ngIf="!elem.separator && elem.page !== currentPagination.currentPage;">{{ elem.page }}</a>
+
+          <span class="page-link" *ngIf="elem.separator">...</span>
+
+        </li>
+
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);" (click)="nextPage()">
+            <span class="sr-only">Pagina successiva</span>
+            <svg class="icon icon-primary">
+              <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-chevron-right">
+              </use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <div class="dropdown">
+        <a class="btn btn-dropdown dropdown-toggle" href="javascript:void(0);" role="button" id="pagerChanger"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Salta alla pagina">pag. {{ currentPagination.pageSize }}</a>
+        <div class="dropdown-menu" aria-labelledby="pagerChanger">
+          <div class="link-list-wrapper">
+            <ul class="link-list">
+              <li><a class="list-item" href="javascript:void(0);" (click)="changePageSize(10)"><span>pag. 10</span></a></li>
+              <li><a class="list-item" href="javascript:void(0);" (click)="changePageSize(20)"><span>pag. 20</span></a></li>
+              <li><a class="list-item" href="javascript:void(0);" (click)="changePageSize(30)"><span>pag. 30</span></a></li>
+              <li><a class="list-item" href="javascript:void(0);" (click)="changePageSize(40)"><span>pag. 40</span></a></li>
+              <li><a class="list-item" href="javascript:void(0);" (click)="changePageSize(50)"><span>pag. 50</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.sfs-modal-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+.sfs-modal-button span {
+  display: none;
+  font-size: 16px;
+}
+@media (min-width: 576px) {
+  .sfs-modal-button span {
+    display: block;
+    margin-bottom: 1px;
+  }
+}
+.sfs-modal-button .sfs-modal-button-icon-bg {
+  background: transparent;
+  border-radius: 44px;
+  height: auto;
+  width: auto;
+  margin-left: 0px;
+  flex: 0 0 44px;
+}
+@media (min-width: 576px) {
+  .sfs-modal-button .sfs-modal-button-icon-bg {
+    background: #fff;
+    height: 44px;
+    width: 44px;
+    margin-left: 10px;
+  }
+}
+.sfs-modal-button .sfs-modal-button-icon-bg .icon-primary {
+  fill: #fff !important;
+}
+@media (min-width: 576px) {
+  .sfs-modal-button .sfs-modal-button-icon-bg .icon-primary {
+    fill: #06c !important;
+  }
+}
+.sfs-modal.modal {
+  height: 100%;
+  height: calc(100% - 48px);
+  top: 48px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border: none;
+  background: #fff;
+  border-radius: 0px;
+  padding: 0px;
+  z-index: 1072;
+  padding-right: 0!important;
+}
+
+@media (min-width: 576px) {
+  .sfs-modal.modal {
+    height: calc(100% - 54px);
+    top: 54px;
+  }
+}
+@media (min-width: 992px) {
+  .sfs-modal.modal {
+    height: calc(100% - 48px);
+    top: 48px;
+  }
+}
+.sfs-modal.modal .modal-dialog {
+  background: #fff;
+  margin: 0px;
+  max-width: none;
+  height: 100%;
+}
+.sfs-modal.modal .modal-dialog .modal-content {
+  min-height: 100%;
+  box-shadow: none;
+}
+.sfs-modal.modal .modal-dialog .modal-content .autocomplete-wrapper-big .autocomplete {
+  padding-left: 65px;
+}
+.sfs-modal.modal .modal-dialog .modal-content .autocomplete-wrapper-big .autocomplete-list {
+  z-index: 1;
+}
+.sfs-modal.modal .modal-dialog .modal-content .autocomplete-wrapper-big .autocomplete-list .autocomplete-list-freesearch a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #06c;
+}
+.sfs-modal.modal .modal-dialog .modal-content .autocomplete-wrapper-big .autocomplete-list .autocomplete-list-freesearch a .search-icon {
+  margin-top: 1px;
+}
+.sfs-modal.modal .modal-dialog .modal-content .autocomplete-wrapper-big .autocomplete-list .autocomplete-list-freesearch a .right-arrow-icon {
+  margin-top: 2px;
+}
+.sfs-modal.modal .sfs-modal-tags-container .sfs-btn-tag {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.sfs-modal.modal .sfs-modal-tags-container .btn-outline-secondary {
+  box-shadow: inset 0 0 0 1px #5f7285;
+}

@@ -1,0 +1,37 @@
+<div class="form-group" [formGroup]="form">
+
+  <input #typeahead type="text" class="autocomplete" placeholder="Testo da cercare" [formControlName]="field.key"
+    [required]="field.required" autocomplete="off" [class.ng-valid]="isValidItem && (isTouched || isDirty)"
+    [class.ng-invalid]="field.required && !isValidItem && isFilled && (isTouched || isDirty)" (blur)="onBlur($event)" (focus)="onFocus($event)">
+  <span class="autocomplete-icon" aria-hidden="true">
+    <svg class="icon icon-sm" *ngIf="isEnabled">
+      <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search"></use>
+    </svg>
+  </span>
+  <ul class="autocomplete-list" id="{{ 'autocomplete-' + field.key }}"
+    [class.autocomplete-list-show]="autocompleteListOpened">
+    <span class="autocomplete-list-item" *ngIf="isLoading">
+      <span class="autocomplete-list-text">
+        Ricerca...
+      </span>
+    </span>
+    <span class="autocomplete-list-item" *ngIf="(filteredData$ | async)?.length == 0">
+      <span class="autocomplete-list-text">
+        Nessun risultato trovato...
+      </span>
+    </span>
+    <li *ngFor="let item of (filteredData$ | async)">
+      <a href="javascript:void(0);" (click)="autocompleteSetValue(item)">
+        <span class="autocomplete-list-text">
+          <span [innerHTML]="autocompleteHighlights(item[field.asyncParams.searchField])"></span>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <label [for]="field.key" [class.active]="true">
+    {{ field.label }}
+    <span *ngIf="field.required"> *</span>
+  </label>
+  <lib-validation-messages [field]="field" [valid]="isValidItem && (isTouched || isDirty)"
+    [invalid]="field.required && !isValidItem && isFilled && (isTouched || isDirty)"></lib-validation-messages>
+</div>

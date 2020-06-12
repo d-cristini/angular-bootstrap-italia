@@ -1,0 +1,21 @@
+<div [ngSwitch]="field.controlType">
+
+  <lib-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
+    [invalid]="!isValid && (isTouched || isDirty)">
+  </lib-checkbox>
+
+  <lib-textbox *ngSwitchCase="'textbox'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
+    [invalid]="!isValid && (isTouched || isDirty)"></lib-textbox>
+
+  <lib-textbox-number *ngSwitchCase="'textbox-number'" [field]="field" [form]="form"
+    [valid]="isValid && (isTouched || isDirty)" [invalid]="!isValid && (isTouched || isDirty)" [min]="field.min" [max]="field.max"></lib-textbox-number>
+
+  <lib-textarea *ngSwitchCase="'textarea'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
+    [invalid]="!isValid && (isTouched || isDirty)"></lib-textarea>
+
+  <lib-select *ngSwitchCase="'dropdown'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
+    [invalid]="!isValid && (isTouched || isDirty)"></lib-select>
+
+  <lib-typeahead *ngSwitchCase="'autocomplete'" [field]="field" [form]="form" [parentValue]="parentValue"></lib-typeahead>
+
+</div>

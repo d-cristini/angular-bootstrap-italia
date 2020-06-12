@@ -1,0 +1,29 @@
+<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+  <span>{{ title }}</span>
+  <svg class="icon icon-xs">
+    <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-expand"></use>
+  </svg>
+</a>
+<div class="dropdown-menu">
+  <div class="link-list-wrapper">
+    <ul class="link-list">
+      <li>
+        <h3 class="no_toc" id="heading">{{ heading }}</h3>
+      </li>
+
+      <li *ngFor="let item of items">
+        <a *ngIf="!item.isDivider && item.disabled==true" class="list-item disabled"
+          aria-disabled="true"><span>ciao</span></a>
+
+        <a *ngIf="!item.isDivider && !item.disabled" class="'list-item" [routerLink]="[item.href]"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive">
+          <span>{{ item.title }}</span>
+          <span *ngIf="rla.isActive" class="sr-only">active</span>
+        </a>
+
+        <span *ngIf="item.isDivider" class="divider"></span>
+      </li>
+
+    </ul>
+  </div>
+</div>

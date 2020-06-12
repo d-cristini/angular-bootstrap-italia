@@ -1,0 +1,132 @@
+<div class="it-header-wrapper">
+
+  <div class="it-header-slim-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="it-header-slim-wrapper-content">
+            <a class="d-lg-block navbar-brand" href="http://www.protezionecivile.gov.it/">{{ owner }}</a>
+            <div class="it-header-slim-right-zone">
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                  <span>ITA</span>
+                  <svg class="icon d-none d-lg-block">
+                    <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-expand"></use>
+                  </svg>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="link-list-wrapper">
+                        <ul class="link-list">
+                          <li>
+                            <a class="list-item" href="#"><span>ITA</span></a>
+                          </li>
+                          <li>
+                            <a class="list-item" href="#"><span>ENG</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a [routerLink]="[loginRoute]" class="btn btn-primary btn-icon btn-full"
+                *ngIf="!isAuthenticated; else elseBlock">
+                <span class="rounded-icon">
+                  <svg class="icon icon-primary">
+                    <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-user"></use>
+                  </svg>
+                </span>
+                <span class="d-none d-lg-block">Accedi</span>
+              </a>
+              <ng-template #elseBlock>
+                <div class="dropdown">
+                  <a class="btn btn-primary btn-icon btn-full" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="rounded-icon">
+                      <svg class="icon icon-primary">
+                        <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-user"></use>
+                      </svg>
+                    </span>
+                    <span class="d-none d-lg-block">{{ userName }}</span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="link-list-wrapper">
+                      <ul class="link-list">
+                        <li><a class="list-item" href="#" (click)="onLogout($event)"><span>Logout</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="it-nav-wrapper">
+    <div class="it-header-center-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="it-header-center-content-wrapper">
+              <div class="it-brand-wrapper">
+                <a href="#">
+                  <svg class="icon">
+                    <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-code-circle"></use>
+                  </svg>
+                  <div class="it-brand-text">
+                    <h2 class="no_toc">{{ appName }}</h2>
+                    <h3 class="no_toc d-none d-md-block">Inserire qui la tag line</h3>
+                  </div>
+                </a>
+              </div>
+              <div class="it-right-zone">
+                <div class="it-socials d-none d-md-flex">
+                  <span>Seguici su</span>
+                  <ul>
+                    <li>
+                      <a href="#" aria-label="Facebook" target="_blank">
+                        <svg class="icon">
+                          <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-facebook"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="Github" target="_blank">
+                        <svg class="icon">
+                          <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-github"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank" aria-label="Twitter">
+                        <svg class="icon">
+                          <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-twitter"></use>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="it-search-wrapper" *ngIf="isAuthenticated">
+                  <span class="d-none d-md-block">Cerca</span>
+                  <a class="search-link rounded-icon" href="#" aria-label="Cerca" data-toggle="modal"
+                    data-target="#modalSearchFullScreen" data-backdrop="false">
+                    <svg class="icon">
+                      <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <lib-header-navbar [menuItems]="menuItems" *ngIf="isAuthenticated"></lib-header-navbar>
+    <lib-search-modal *ngIf="isAuthenticated"></lib-search-modal>
+  </div>
+</div>

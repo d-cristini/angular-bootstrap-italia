@@ -1,0 +1,33 @@
+.custom-stepper {
+  min-height: 20em;
+  padding-top: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+@media (min-width: 992px) {
+
+  .custom-stepper {
+    min-height: 22em;
+
+    .form-map {
+      margin-bottom: 3em;
+    }
+  }
+
+  .custom-stepper-header {
+    box-shadow: 0 10px 40px -30px grey;
+  }
+
+  .custom-stepper-nav {
+    box-shadow: 0 -15px 30px -25px grey;
+  }
+
+  .custom-form-group {
+    min-height: 5em;
+  }
+
+}

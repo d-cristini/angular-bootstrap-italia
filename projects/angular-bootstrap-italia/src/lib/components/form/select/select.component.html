@@ -1,0 +1,13 @@
+<div class="form-group" [formGroup]="form">
+  <div class="bootstrap-select-wrapper" [class.ng-valid]="valid" [class.ng-invalid]="invalid">
+    <select class="custom-select" [id]="field.key" [formControlName]="field.key" [required]="field.required">
+      <option value="" title="Scegli un'opzione" data-content="Annulla <span class='reset-label'></span>"></option>
+      <option *ngFor="let opt of field.options" [ngValue]="getFormattedValue(opt.value)">{{opt.key}}</option>
+    </select>
+    <label [for]="field.key">
+      {{ field.label }}
+      <span *ngIf="field.required"> *</span>
+    </label>
+    <lib-validation-messages [field]="field" [valid]="valid" [invalid]="invalid"></lib-validation-messages>
+  </div>
+</div>

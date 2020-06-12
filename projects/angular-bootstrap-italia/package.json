@@ -1,0 +1,20 @@
+{
+  "name": "angular-bootstrap-italia",
+  "version": "0.2.4",
+  "author": {
+    "name": "Dario Cristini",
+    "email": "dario.cristini@gmail.com",
+    "url": "https://www.npmjs.com/~dario.cristini"
+  },
+  "license": "MIT",
+  "keywords": ["bootstrap-italia", "angular", "ui-kit"],
+  "peerDependencies": {
+    "@angular/common": "^9.1.6",
+    "@angular/core": "^9.1.6",
+    "@angular/forms": "~9.1.6",
+    "tslib": "^1.10.0",
+    "leaflet": "^1.6.0",
+    "leaflet-draw": "^1.0.4",
+    "leaflet-draw-locales": "^1.1.7"
+  }
+}

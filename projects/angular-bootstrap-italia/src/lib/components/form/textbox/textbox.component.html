@@ -1,0 +1,9 @@
+<div class="form-group" [formGroup]="form">
+  <input class="form-control" [type]="field.type" [id]="field.key" [formControlName]="field.key"
+    [required]="field.required">
+  <label class="fixedLabel" [for]="field.key" [class.active]="isActive">
+    {{ field.label }}
+    <span *ngIf="field.required"> *</span>
+  </label>
+  <lib-validation-messages [field]="field" [valid]="valid" [invalid]="invalid"></lib-validation-messages>
+</div>

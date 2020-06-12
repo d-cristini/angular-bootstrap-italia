@@ -1,0 +1,8 @@
+<div class="form-group" [formGroup]="form">
+  <textarea [id]="field.key" rows="3" [formControlName]="field.key" [required]="field.required"></textarea>
+  <label class="fixedLabel" [for]="field.key" [class.active]="isActive">
+    {{ field.label }}
+    <span *ngIf="field.required"> *</span>
+  </label>
+  <lib-validation-messages [field]="field" [valid]="valid" [invalid]="invalid"></lib-validation-messages>
+</div>

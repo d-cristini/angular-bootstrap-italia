@@ -1,0 +1,56 @@
+<div class="it-header-navbar-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <nav class="navbar navbar-expand-lg has-megamenu">
+          <button class="custom-navbar-toggler" type="button" aria-controls="nav10" aria-expanded="false"
+            aria-label="Toggle navigation" data-target="#nav10">
+            <svg class="icon">
+              <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-burger"></use>
+            </svg>
+          </button>
+          <div class="navbar-collapsable" id="nav10">
+            <div class="overlay"></div>
+            <div class="close-div sr-only">
+              <button class="btn close-menu" type="button"><span class="it-close"></span>close</button>
+            </div>
+            <div class="menu-wrapper">
+
+              <ul class="navbar-nav">
+
+                <ng-template ngFor let-item [ngForOf]="menuItems">
+                  <ng-container [ngSwitch]="item.type">
+
+                    <li *ngSwitchCase="'link'" class="nav-item" routerLinkActive="active"
+                      [routerLinkActiveOptions]="{exact: true}">
+
+                      <a *ngIf="!item.disabled; else elseBlock" class="nav-link" [routerLink]="[item.href]"
+                        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive">
+                        <span>{{ item.title }}</span>
+                        <span *ngIf="rla.isActive" class="sr-only"> attivo</span>
+                      </a>
+
+                      <ng-template #elseBlock>
+                        <a class="nav-link disabled" [routerLink]="[item.href]"><span>{{ item.title }}</span></a>
+                      </ng-template>
+
+                    </li>
+
+                    <li class="nav-item dropdown" *ngSwitchCase="'dropdown'">
+                      <lib-dropdown *ngSwitchCase="'dropdown'" [title]="item.title" [heading]="item.payload.heading"
+                        [items]="item.payload.elements"></lib-dropdown>
+                    </li>
+
+                  </ng-container>
+                </ng-template>
+
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

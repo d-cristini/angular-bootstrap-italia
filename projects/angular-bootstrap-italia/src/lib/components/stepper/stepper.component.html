@@ -1,0 +1,48 @@
+<div class="steppers">
+  <ul class="steppers-header custom-stepper-header">
+
+    <li *ngFor="let step of stepElements"
+      [ngClass]="{'active': step.index === currentStepIndex, 'confirmed': step.index !== currentStepIndex && isValidStep(step.index)}"
+      [ngStyle]="{'width': widthExp  + '%'}">
+      {{ step.label }}
+      <svg class="icon icon-success steppers-success" *ngIf="step.index !== currentStepIndex && isValidStep(step.index)">
+        <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-check"></use>
+      </svg>
+      <svg class="icon icon-warning steppers-success" *ngIf="step.index !== currentStepIndex && !isValidStep(step.index) && isTouchedStep(step.index)">
+        <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-info-circle"></use>
+      </svg>
+      <span class="sr-only" *ngIf="step.index === currentStepIndex">Attivo</span>
+      <span class="sr-only" *ngIf="step.index !== currentStepIndex && isValidStep(step.index)">Confermato</span>
+    </li>
+
+    <li class="steppers-index" aria-hidden="true">{{ currentStepIndex }}/{{ stepElements.length }}</li>
+
+  </ul>
+  <div class="align-middle custom-stepper" aria-live="polite">
+    <form [formGroup]="stepForm">
+      <div class="form-row" *ngFor="let row of stepRows">
+        <div class="custom-form-group" *ngFor="let item of getItems(row)" [ngClass]="item.class">
+          <lib-dynamic-form-element [field]="item" [parentField]="getPratentField(item.parentFieldKey)" [form]="stepForm"></lib-dynamic-form-element>
+        </div>
+      </div>
+      <div class="form-map" *ngIf="stepHaveMap(currentStepIndex)">
+        <lib-leaflet-map [latitude]="latitude" [longitude]="longitude" [bboxPolygon]="mapBboxPolygon" [shapePolygon]="mapShapePolygon" (geoJson)="getMapGeojson($event)"></lib-leaflet-map>
+      </div>
+    </form>
+  </div>
+
+  <nav class="steppers-nav custom-stepper-nav">
+    <button type="button" class="btn btn-outline-primary btn-sm steppers-btn-prev" (click)="prevStep()" [disabled]="currentStepIndex === 1">
+      <svg class="icon icon-primary">
+        <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-chevron-left"></use>
+      </svg>
+      Indietro
+    </button>
+    <button type="button" class="btn btn-primary btn-sm steppers-btn-save" (click)="onSubmit()" [disabled]="!stepForm.valid">Salva</button>
+    <button type="button" class="btn btn-outline-primary btn-sm steppers-btn-next" (click)="nextStep()" [disabled]="currentStepIndex === stepElements.length">Avanti
+      <svg class="icon icon-primary">
+        <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-chevron-right"></use>
+      </svg>
+    </button>
+  </nav>
+</div>

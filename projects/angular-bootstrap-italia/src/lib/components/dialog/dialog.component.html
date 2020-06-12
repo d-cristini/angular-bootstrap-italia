@@ -1,0 +1,23 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#libModal">
+  {{ buttonLabel }}
+</button>
+
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="libModal" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ modalTitle }}
+        </h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <svg class="icon">
+            <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-close"></use>
+          </svg>
+        </button>
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

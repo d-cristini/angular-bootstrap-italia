@@ -1,0 +1,68 @@
+<div class="modal sfs-modal fade show" tabindex="-1" role="dialog" id="modalSearchFullScreen">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="container">
+         <!-- Header -->
+         <div class="row mt-5 mb-5">
+           <div class="col-12 d-flex justify-content-between align-items-center">
+             <h1 class="text-secondary">Cerca</h1>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+               <svg class="icon icon-lg">
+                 <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-close"></use>
+               </svg>
+             </button>
+           </div>
+         </div>
+
+         <!-- Input -->
+         <div class="row">
+           <div class="col-12">
+             <form id="autocompleteSearchForm" autocomplete="off">
+               <div class="form-group autocomplete-wrapper-big">
+                 <input
+                   autocomplete="off"
+                   type="search"
+                   class="autocomplete"
+                   placeholder="Cerca eventi, bollettini o per tag"
+                   id="autocompleteSearchFullScreen"
+                   name="autocompleteSearchFullScreen">
+                 <span class="autocomplete-icon" aria-hidden="true">
+                   <svg class="icon icon-sm">
+                     <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search"></use>
+                   </svg>
+                 </span>
+                 <ul class="autocomplete-list" id="autocompleteListSearchFullScreen"></ul>
+                 <label for="autocompleteSearchFullScreen" class="sr-only">Cerca nel sito</label>
+               </div>
+             </form>
+           </div>
+         </div>
+
+         <!-- Filters -->
+         <div id="autocompleteFilters" class="row">
+           <div class="col-12 sfs-modal-tags-container">
+             <button type="button" class="btn btn-xs sfs-btn-tag btn-primary" data-filter="">Tutto</button>
+             <button type="button" class="btn btn-xs sfs-btn-tag btn-icon btn-outline-secondary" data-filter="progetto">
+               <svg class="icon icon-secondary">
+                 <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-map-marker-circle"></use>
+               </svg>
+               <span>Eventi</span>
+             </button>
+             <button type="button" class="btn btn-xs sfs-btn-tag btn-icon btn-outline-secondary" data-filter="documento">
+               <svg class="icon icon-secondary">
+                 <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-note"></use>
+               </svg>
+               <span>Bollettini</span>
+             </button>
+             <button type="button" class="btn btn-xs sfs-btn-tag btn-icon btn-outline-secondary" data-filter="amministrazione">
+               <svg class="icon icon-secondary">
+                 <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-star-outline"></use>
+               </svg>
+               <span>Coau</span>
+             </button>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+</div>

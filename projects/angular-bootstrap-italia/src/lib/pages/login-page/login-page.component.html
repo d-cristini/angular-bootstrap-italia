@@ -1,0 +1,49 @@
+<div id="content" class="container py-5">
+  <div class="wrapper">
+
+    <section class="container" style="max-width: 40em">
+      <h1 class="pb-5">Log in</h1>
+
+      <form class="login" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+
+        <div class="form-group">
+          <input type="text" name="email" class="form-control " id="email" ngModel required email>
+          <label for="email">Email</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="password" class="form-control input-password" id="password" ngModel required minlength="14">
+          <label for="password">Password</label>
+          <span class="password-icon bg-transparent" aria-hidden="true">
+            <svg class="password-icon-visible icon icon-sm">
+              <use
+                xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-password-visible">
+              </use>
+            </svg>
+            <svg class="password-icon-invisible icon icon-sm d-none">
+              <use
+                xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-password-invisible">
+              </use>
+            </svg>
+          </span>
+        </div>
+
+        <div class="form-check">
+          <input id="remember" name="remember" type="checkbox">
+          <label for="remember">Ricordami</label>
+        </div>
+
+        <div class="py-4 login_buttons">
+          <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">Log in</button>
+        </div>
+
+        <!-- <p>Se non hai ancora creato un account, <a [routerLink]="['/']" >registrati</a> adesso.</p> -->
+
+        <p>Se invece hai dimenticato la password, puoi <a [routerLink]="['/reset-password']">reimpostarla</a>.</p>
+
+      </form>
+
+    </section>
+
+  </div>
+</div>
