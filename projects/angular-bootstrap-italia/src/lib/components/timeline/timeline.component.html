@@ -1,7 +1,7 @@
 <div class="it-timeline-wrapper">
   <div class="row">
 
-    <div class="col-12" *ngFor="let item of timeline">
+    <div class="col-12" *ngFor="let item of timeline; let i = index">
       <div class="timeline-element">
         <div class="it-pin-wrapper it-evidence">
           <div class="pin-icon">
@@ -15,13 +15,13 @@
           <div class="card">
             <div class="card-body">
               <div class="category-top">
-                <p class="category" *ngIf="!item.changesName">Inserimento</p>
-                <p class="category" *ngIf="item.changesName">Modifica</p>
+                <p class="category" *ngIf="i == 0">Inserimento</p>
+                <p class="category" *ngIf="i > 0">Modifica</p>
               </div>
-              <h5 class="card-title" *ngIf="item.changesName">Sono state apportate le seguenti modifiche: </h5>
-              <p class="card-text" *ngIf="item.changesName">{{ item.changesName }}</p>
+              <h5 class="card-title" *ngIf="item.changesName && i > 0">Sono state apportate le seguenti modifiche: </h5>
+              <p class="card-text" *ngIf="item.changesName && i > 0">{{ item.changesName }}</p>
               <span class="card-signature">utente: {{ item.user }}</span>
-              <a class="read-more" href="#">
+              <a class="read-more" href="javascript:void(0);" (click)="openDetailModal(item)">
                 <span class="text">Leggi di più</span>
                 <svg class="icon">
                   <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-arrow-right"></use>
@@ -53,11 +53,50 @@
               <h5 class="card-title">Sono state apportate le seguenti modifiche: </h5>
               <p class="card-text">{{ lastElem.changesName }}</p>
               <span class="card-signature">utente: {{ lastElem.user }}</span>
+              <a class="read-more" href="javascript:void(0);" (click)="openDetailModal(lastElem)">
+                <span class="text">Leggi di più</span>
+                <svg class="icon">
+                  <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-arrow-right"></use>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="timelineModal" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Elenco Modifiche Apportate:
+        </h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <svg class="icon">
+            <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-close"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="link-list-wrapper">
+          <ul class="link-list">
+            <li *ngFor="let elem of modalDetails">
+              <svg class="icon icon-primary">
+                <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-chevron-right"></use>
+              </svg>
+              <span class="font-weight-bold">{{ elem.key }}: </span>
+              {{ elem.value | json }}
+              <span class="font-italic" style="color: gray;" *ngIf="elem.oldValue">
+                (valore precedente: {{ elem.oldValue | json }})
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

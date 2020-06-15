@@ -55,3 +55,5 @@ export * from './lib/components/form/checkbox/form-checkbox';
 export * from './lib/components/form/select/form-dropdown';
 export * from './lib/components/form/typeahead/form-autocomplete';
 export * from './lib/components/form/typeahead/async-search-params.model';
+export * from './lib/components/timeline/time-history.model';
+export * from './lib/components/timeline/dictionary.model';
