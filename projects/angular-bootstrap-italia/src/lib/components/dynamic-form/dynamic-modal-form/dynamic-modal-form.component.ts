@@ -37,6 +37,11 @@ export class DynamicModalFormComponent implements OnInit {
     this.needConfirm = state;
   }
 
+  resetForm() {
+    this.needConfirm = false;
+    this.form.reset();
+  }
+
   get flatValues() {
     const formKeys = Object.keys(this.form.getRawValue());
     const elements = [].concat(...this.rows.map(e => e.items));

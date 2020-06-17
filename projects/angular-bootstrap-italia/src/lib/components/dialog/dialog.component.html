@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#libModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#' + modalId">
   {{ buttonLabel }}
 </button>
 
 <!-- Modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="libModal" data-keyboard="false" data-backdrop="static">
+<div class="modal fade" tabindex="-1" role="dialog" [id]="modalId" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">

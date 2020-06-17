@@ -13,14 +13,22 @@ export class DialogComponent implements OnInit {
 
   @Input() buttonLabel: string;
   @Input() modalTitle: string;
+  @Input() modalId: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.modalId) {
+      this.modalId = 'libModal';
+    }
   }
 
   openModal() {
-    $('#libModal').modal('show');
+    $('#' + this.modalId).modal('show');
+  }
+
+  closeModal() {
+    $('#' + this.modalId).modal('hide');
   }
 
 }
