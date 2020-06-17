@@ -25,14 +25,16 @@ export class TextboxNumberComponent implements OnInit {
   ngOnInit(): void {
     if (this.field.value) {
       this.form.get(this.field.key).setValue(this.field.value);
-    } else if (this.min > 0){
+    } else if (this.min > 0) {
       this.form.get(this.field.key).setValue(this.min);
     } else {
       this.form.get(this.field.key).setValue(0);
     }
   }
 
-  increseValue() {
+  increseValue(event) {
+    event.stopPropagation();
+
     const oldValue: number = this.form.get(this.field.key).value || 0;
     const newValue = oldValue + 1;
 
@@ -41,7 +43,9 @@ export class TextboxNumberComponent implements OnInit {
     }
   }
 
-  decreseValue() {
+  decreseValue(event) {
+    event.stopPropagation();
+
     const oldValue: number = this.form.get(this.field.key).value || 0;
     const newValue = oldValue - 1;
 

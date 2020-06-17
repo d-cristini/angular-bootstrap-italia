@@ -128,7 +128,17 @@ export class TypeaheadComponent implements OnInit, AfterViewInit {
   }
 
   get isValidItem() {
-    return typeof this.form.controls[this.field.key].value !== 'string';
+    if (typeof this.form.controls[this.field.key].value === 'object') {
+      if (this.form.controls[this.field.key].errors) {
+        this.form.controls[this.field.key].setErrors(null);
+      }
+      return true;
+    } else {
+      if (!this.form.controls[this.field.key].errors) {
+        this.form.controls[this.field.key].setErrors({incorrect: true});
+      }
+      return false;
+    }
   }
 
   get isTouched() {
@@ -147,14 +157,6 @@ export class TypeaheadComponent implements OnInit, AfterViewInit {
     const input = this.form.controls[this.field.key].value;
     return item.replace(new RegExp(input, 'gi'), (match) => `<mark>${match}</mark>`);
   }
-
-  // autocompleteFilterList(input: string) {
-  //   if (typeof input === 'string') {
-  //     const newData = this.data.filter(elem => elem.key.match(new RegExp(input, 'gi')));
-  //     return newData.slice(0, this.dataLength);
-  //   }
-  //   return this.data.slice(0, this.dataLength);
-  // }
 
   autocompleteSetValue(element: any) {
     this.form.controls[this.field.key].patchValue(element);

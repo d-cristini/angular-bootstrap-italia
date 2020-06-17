@@ -1,7 +1,7 @@
 <div class="form-group" [formGroup]="form">
 
-  <input #typeahead type="text" class="autocomplete" placeholder="Testo da cercare" [formControlName]="field.key"
-    [required]="field.required" autocomplete="off" [class.ng-valid]="isValidItem && (isTouched || isDirty)"
+  <input #typeahead type="search" class="autocomplete" placeholder="Testo da cercare" [formControlName]="field.key"
+    autocomplete="off" [class.ng-valid]="isValidItem && (isTouched || isDirty)"
     [class.ng-invalid]="field.required && !isValidItem && isFilled && (isTouched || isDirty)" (blur)="onBlur($event)" (focus)="onFocus($event)">
   <span class="autocomplete-icon" aria-hidden="true">
     <svg class="icon icon-sm" *ngIf="isEnabled">
