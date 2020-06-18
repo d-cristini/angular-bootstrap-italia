@@ -25,12 +25,11 @@
         <td class="align-middle" *ngFor="let key of getElemKeys(item)">
           {{ item[key] }}
         </td>
-        <td class="align-middle">
-          <a href="#" class="btn btn-secondary btn-xs btn-icon" role="button" aria-disabled="true">
+        <td class="align-middle" *ngIf="detailUpdate">
+          <a href="javascript:void(0);" class="btn btn-secondary btn-xs btn-icon" role="button" aria-disabled="true" (click)="onDetail(item)">
             <svg class="icon icon-white">
               <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search">
               </use>
-
             </svg>
             <span>Dettagli</span>
           </a>

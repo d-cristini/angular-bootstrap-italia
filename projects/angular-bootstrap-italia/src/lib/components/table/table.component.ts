@@ -13,10 +13,12 @@ import { IPagination } from './table-pagination/pagination.model';
 export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() columns: string[];
+  @Input() detailUpdate: boolean;
   @Input() $rows: Observable<any[]>;
   @Input() pagination: IPagination;
 
   @Output() paginationChange = new EventEmitter();
+  @Output() detailSelected = new EventEmitter();
 
   loading: boolean;
   loadingSub: Subscription;
@@ -54,6 +56,10 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
   getElemKeys(elem: object) {
     return Object.keys(elem);
+  }
+
+  onDetail(rowElem: object) {
+    this.detailSelected.emit(rowElem);
   }
 
 }
