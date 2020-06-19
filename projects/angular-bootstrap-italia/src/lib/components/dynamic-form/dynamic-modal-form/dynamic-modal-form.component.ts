@@ -20,6 +20,8 @@ export class DynamicModalFormComponent implements OnInit {
 
   @Output() submitEvent = new EventEmitter();
 
+  @Output() newInsertEvent = new EventEmitter();
+
   form: FormGroup;
 
   needConfirm: boolean;
@@ -66,6 +68,10 @@ export class DynamicModalFormComponent implements OnInit {
 
   onSubmit() {
     this.submitEvent.emit(this.form.getRawValue());
+  }
+
+  emitNewInsert(event) {
+    this.newInsertEvent.emit(event);
   }
 
 }

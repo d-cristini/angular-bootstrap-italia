@@ -2,7 +2,8 @@
 
   <input #typeahead type="search" class="autocomplete" placeholder="Testo da cercare" [formControlName]="field.key"
     autocomplete="off" [class.ng-valid]="isValidItem && (isTouched || isDirty)"
-    [class.ng-invalid]="field.required && !isValidItem && isFilled && (isTouched || isDirty)" (blur)="onBlur($event)" (focus)="onFocus($event)">
+    [class.ng-invalid]="field.required && !isValidItem && isFilled && (isTouched || isDirty)" (blur)="onBlur($event)"
+    (focus)="onFocus($event)">
   <span class="autocomplete-icon" aria-hidden="true">
     <svg class="icon icon-sm" *ngIf="isEnabled">
       <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-search"></use>
@@ -15,11 +16,18 @@
         Ricerca...
       </span>
     </span>
-    <span class="autocomplete-list-item" *ngIf="(filteredData$ | async)?.length == 0">
+    <span class="autocomplete-list-item" *ngIf="(filteredData$ | async)?.length == 0 && !field.addNew">
       <span class="autocomplete-list-text">
         Nessun risultato trovato...
       </span>
     </span>
+    <li *ngIf="(filteredData$ | async)?.length == 0 && field.addNew">
+      <a href="javascript:void(0);" (click)="newInsert(field.key)">
+        <span class="autocomplete-list-text">
+          Nessun risultato! Aggiungi nuovo elemento...
+        </span>
+      </a>
+    </li>
     <li *ngFor="let item of (filteredData$ | async)">
       <a href="javascript:void(0);" (click)="autocompleteSetValue(item)">
         <span class="autocomplete-list-text">

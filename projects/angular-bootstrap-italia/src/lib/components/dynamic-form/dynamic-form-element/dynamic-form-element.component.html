@@ -16,6 +16,6 @@
   <lib-select *ngSwitchCase="'dropdown'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
     [invalid]="!isValid && (isTouched || isDirty)"></lib-select>
 
-  <lib-typeahead *ngSwitchCase="'autocomplete'" [field]="field" [form]="form" [parentValue]="parentValue"></lib-typeahead>
+  <lib-typeahead *ngSwitchCase="'autocomplete'" [field]="field" [form]="form" [parentValue]="parentValue" (newInsertEvent)="emitNewInsert($event)"></lib-typeahead>
 
 </div>

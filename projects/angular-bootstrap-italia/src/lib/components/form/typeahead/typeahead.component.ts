@@ -24,6 +24,8 @@ export class TypeaheadComponent implements OnInit, AfterViewInit {
 
   @Input() parentValue: object = null;
 
+  @Output() newInsertEvent = new EventEmitter();
+
   @ViewChild('typeahead') autocompleteInput: ElementRef;
 
   autocompleteListOpened = false;
@@ -161,5 +163,9 @@ export class TypeaheadComponent implements OnInit, AfterViewInit {
   autocompleteSetValue(element: any) {
     this.form.controls[this.field.key].patchValue(element);
     this.autocompleteListOpened = false;
+  }
+
+  newInsert(fieldKey: string) {
+    this.newInsertEvent.emit(fieldKey);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -16,6 +16,8 @@ export class DynamicFormElementComponent implements OnInit, OnDestroy {
   @Input() form: FormGroup;
 
   @Input() parentField: FormBase<string>;
+
+  @Output() newInsertEvent = new EventEmitter();
 
   parentSubscription: Subscription;
 
@@ -74,6 +76,10 @@ export class DynamicFormElementComponent implements OnInit, OnDestroy {
 
   get isPristine() {
     return this.form.controls[this.field.key].pristine;
+  }
+
+  emitNewInsert(event) {
+    this.newInsertEvent.emit(event);
   }
 
 }

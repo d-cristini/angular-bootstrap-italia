@@ -7,7 +7,7 @@
         <div *ngFor="let row of rows">
           <div class="form-row">
             <div *ngFor="let item of row.items" [ngClass]="item.class">
-              <lib-dynamic-form-element [field]="item" [form]="form">
+              <lib-dynamic-form-element [field]="item" [form]="form" (newInsertEvent)="emitNewInsert($event)">
               </lib-dynamic-form-element>
             </div>
           </div>
