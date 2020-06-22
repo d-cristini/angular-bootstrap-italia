@@ -12,7 +12,7 @@ import { IPagination } from './table-pagination/pagination.model';
 })
 export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() columns: string[];
+  @Input() columns: { label: string, key: string }[];
   @Input() detailUpdate: boolean;
   @Input() $rows: Observable<any[]>;
   @Input() pagination: IPagination;

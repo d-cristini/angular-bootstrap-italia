@@ -3,17 +3,20 @@
     <thead>
       <tr>
         <th scope="col" *ngFor="let colItem of columns">
-          <span>{{ colItem }}</span>
+          <span>{{ colItem.label }}</span>
           <!-- <svg class="icon icon-xs">
                     <use xlink:href="./assets/bootstrap-italia/svg/sprite.svg#it-expand">
                     </use>
                   </svg> -->
         </th>
+        <th scope="col" *ngIf="detailUpdate">
+          <span> Azione </span>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngIf="loading">
-        <td [attr.colspan]="columns.length">
+        <td [attr.colspan]="detailUpdate ? columns.length + 1 : columns.length">
           <div class="progress progress-indeterminate" style="width: 100%;">
             <span class="sr-only">In elaborazione...</span>
             <div class="progress-bar" role="progressbar"></div>
@@ -22,8 +25,8 @@
       </tr>
 
       <tr *ngFor="let item of $rows | async">
-        <td class="align-middle" *ngFor="let key of getElemKeys(item)">
-          {{ item[key] }}
+        <td class="align-middle" *ngFor="let column of columns">
+          {{ item[column.key] }}
         </td>
         <td class="align-middle" *ngIf="detailUpdate">
           <a href="javascript:void(0);" class="btn btn-secondary btn-xs btn-icon" role="button" aria-disabled="true" (click)="onDetail(item)">

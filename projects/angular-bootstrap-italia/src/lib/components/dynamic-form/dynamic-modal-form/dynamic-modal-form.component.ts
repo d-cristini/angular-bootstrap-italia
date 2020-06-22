@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 // Models
@@ -13,7 +13,7 @@ import { DynamicFormControlService } from '../dynamic-form-control.service';
   templateUrl: './dynamic-modal-form.component.html',
   styleUrls: ['./dynamic-modal-form.component.scss']
 })
-export class DynamicModalFormComponent implements OnInit {
+export class DynamicModalFormComponent implements OnInit, OnChanges {
 
   @Input() rows: FormRow<string>[] = [];
   @Input() defaultState: any;
@@ -33,6 +33,16 @@ export class DynamicModalFormComponent implements OnInit {
 
     const elements = [].concat(...this.rows.map(e => e.items));
     this.form = this.qcs.toFormGroup(elements, this.defaultState);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.defaultState && this.defaultState) {
+      Object.keys(this.defaultState).forEach(key => {
+        if (this.form.get(key)) {
+          this.form.get(key).setValue(this.defaultState[key]);
+        }
+      });
+    }
   }
 
   toggleConfirm(state: boolean) {
@@ -67,7 +77,16 @@ export class DynamicModalFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitEvent.emit(this.form.getRawValue());
+    const rawValue = this.form.getRawValue();
+
+    if (this.defaultState) {
+      const extraKeys = Object.keys(this.defaultState).filter(x => !Object.keys(rawValue).includes(x));
+      extraKeys.forEach(key => {
+        rawValue[key] = this.defaultState[key];
+      });
+    }
+
+    this.submitEvent.emit(rawValue);
   }
 
   emitNewInsert(event) {
