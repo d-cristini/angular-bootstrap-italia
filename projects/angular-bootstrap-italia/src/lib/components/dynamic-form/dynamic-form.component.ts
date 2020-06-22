@@ -18,6 +18,7 @@ export class DynamicFormComponent implements OnInit {
 
   @Input() rows: FormRow<string>[] = [];
   @Input() defaultState: any;
+  @Input() submitLabel: string;
 
   @Output() submitEvent = new EventEmitter();
   @Output() cancelEvent = new EventEmitter();
@@ -28,6 +29,10 @@ export class DynamicFormComponent implements OnInit {
   constructor(private qcs: DynamicFormControlService) {  }
 
   ngOnInit() {
+    if (!this.submitLabel) {
+      this.submitLabel = 'Conferma';
+    }
+
     const elements = [].concat(...this.rows.map(e => e.items));
     this.form = this.qcs.toFormGroup(elements, this.defaultState);
   }
