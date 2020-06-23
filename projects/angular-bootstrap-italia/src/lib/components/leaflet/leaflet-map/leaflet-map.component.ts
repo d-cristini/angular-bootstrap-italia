@@ -16,8 +16,10 @@ export class LeafletMapComponent implements OnInit, OnChanges {
   // @Input() mapId: string;
   @Input() latitude: number;
   @Input() longitude: number;
+  @Input() enableEdit: boolean;
   @Input() bboxPolygon: any;
   @Input() shapePolygon: any;
+  @Input() geoJsonFeatureList: any[];
 
   @Output() geoJson = new EventEmitter();
 
@@ -80,8 +82,10 @@ export class LeafletMapComponent implements OnInit, OnChanges {
 
     this.map.addLayer(this.editableLayers);
 
-    const drawControl = new L.Control.Draw(this.options);
-    this.map.addControl(drawControl);
+    if (this.enableEdit) {
+      const drawControl = new L.Control.Draw(this.options);
+      this.map.addControl(drawControl);
+    }
 
     this.map.on(L.Draw.Event.CREATED, (e) => {
       this.drawnLayers.push({ layer: e.layer, type: e.layerType });
@@ -116,6 +120,16 @@ export class LeafletMapComponent implements OnInit, OnChanges {
 
       this.updateMapGeoJson();
     });
+
+    // Input GeoJson feature list
+    const fullLayer = L.geoJSON(this.geoJsonFeatureList);
+    const layers = fullLayer.getLayers();
+    layers.forEach(layer => {
+      this.drawnLayers.push({ layer, type: 'Feature' });
+      this.editableLayers.addLayer(layer);
+    });
+
+    this.map.fitBounds(fullLayer.getBounds());
   }
 
   ngOnChanges(changes: SimpleChanges): void {

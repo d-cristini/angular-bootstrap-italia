@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="form-map" *ngIf="stepHaveMap(currentStepIndex)">
-        <lib-leaflet-map [latitude]="latitude" [longitude]="longitude" [bboxPolygon]="mapBboxPolygon" [shapePolygon]="mapShapePolygon" (geoJson)="getMapGeojson($event)"></lib-leaflet-map>
+        <lib-leaflet-map [latitude]="latitude" [longitude]="longitude" [bboxPolygon]="mapBboxPolygon" [shapePolygon]="mapShapePolygon" (geoJson)="getMapGeojson($event)" [enableEdit]="true"></lib-leaflet-map>
       </div>
     </form>
   </div>
