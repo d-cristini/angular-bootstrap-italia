@@ -1,0 +1,10 @@
+<div class="it-datepicker-wrapper">
+  <div class="form-group">
+    <input class="form-control it-date-datepicker" type="text" placeholder="inserisci la data in formato gg/mm/aaaa" [id]="field.key" [formControlName]="field.key" [required]="field.required">
+    <label [for]="field.key">
+      {{ field.label }}
+      <span *ngIf="field.required"> *</span>
+    </label>
+    <lib-validation-messages [field]="field" [valid]="valid" [invalid]="invalid"></lib-validation-messages>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { ValidationMessagesComponent } from './validation-messages/validation-me
 
 // Services
 import { TypeaheadSearchService } from './typeahead/typeahead-search.service';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TypeaheadSearchService } from './typeahead/typeahead-search.service';
     TextboxNumberComponent,
     CheckboxComponent,
     TextareaComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    DatePickerComponent
   ],
   exports: [
     TypeaheadComponent,
@@ -33,7 +35,8 @@ import { TypeaheadSearchService } from './typeahead/typeahead-search.service';
     TextboxNumberComponent,
     CheckboxComponent,
     TextareaComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    DatePickerComponent
   ],
   providers: [TypeaheadSearchService]
 })

@@ -18,4 +18,7 @@
 
   <lib-typeahead *ngSwitchCase="'autocomplete'" [field]="field" [form]="form" [parentValue]="parentValue" (newInsertEvent)="emitNewInsert($event)"></lib-typeahead>
 
+  <lib-date-picker *ngSwitchCase="'datepicker'" [field]="field" [form]="form" [valid]="isValid && (isTouched || isDirty)"
+  [invalid]="!isValid && (isTouched || isDirty)"></lib-date-picker>
+
 </div>
